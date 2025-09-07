@@ -15,7 +15,7 @@ const displayFunction = (plant) => {
 
             <div class="bg-[rgba(255,255,255,1)] rounded-lg p-4">
                 <figure><img src="${tree.image}" alt="" class="w-full h-60 rounded-lg" /></figure>
-                <h1 class=""> ${tree.name}</h1>
+                <h1 onclick="cardHistory(${tree.id})" class=""> ${tree.name}</h1>
                 <p class="">${tree.description}</p>
                 <div class="flex justify-between items-center mt-2">
                     <button class="px-3 py-1 rounded bg-[rgba(220,252,231,1)] text-[rgba(21,128,61,1)]">${tree.category}</button>
@@ -71,21 +71,38 @@ const categories1 = () => {
     )
 }
 categories1()
+
+const revColor = () => {
+    const btn = document.querySelectorAll(".activeButton");
+
+    btn.forEach((bun) => bun.classList.remove("active"));
+
+}
+
 const categoriesFun = (cate) => {
+    const OldCategories = document.getElementById('all_categories');
+    OldCategories.innerHTML = "";
     cate.forEach(cate => {
-        const OldCategories = document.getElementById('all_categories');
+
         const newCategories = document.createElement("div");
         newCategories.innerHTML = `
-            <button onclick="loadCategoryPlant(${cate.id})" class="mt-4 ">${cate.category_name}</button>
+            <button  onclick="handleCategoryPlant(this,${cate.id})" class="mt-4 activeButton p-2 rounded-lg">${cate.category_name}</button>
 
 
         `
+
+
         OldCategories.appendChild(newCategories);
 
     })
 
-
 }
+const handleCategoryPlant = (btn, categoryTd) => {
+    revColor()
+    btn.classList.add("active")
+    loadCategoryPlant(categoryTd)
+}
+
 const loadCategoryPlant = (id) => {
     const load = `https://openapi.programming-hero.com/api/category/${id}`
     fetch(load)
@@ -93,23 +110,23 @@ const loadCategoryPlant = (id) => {
         .then(data => displayPlant(data.plants)
     )
 }
-const displayPlant = (plants) => {
+const displayPlant = (plant) => {
 
 
     const myAllCard2 = document.getElementById("all_cards");
     myAllCard2.innerHTML = " ";
-    plants.forEach(plant => {
+    plant.forEach(tree => {
         const newCard = document.createElement("div");
         newCard.innerHTML = `
         <div class="bg-[rgba(255,255,255,1)] rounded-lg p-4">
-                <figure><img src="${plant.image}" alt="" class="w-full h-60 rounded-lg" /></figure>
-                <h1 class=""> ${plant.name}</h1>
-                <p class="">${plant.description}</p>
+                <figure><img src="${tree.image}" alt="" class="w-full h-60 rounded-lg" /></figure>
+                <h1 onclick="cardHistory(${tree.id})" class=""> ${tree.name}</h1>
+                <p class="">${tree.description}</p>
                 <div class="flex justify-between items-center mt-2">
-                    <button class="px-3 py-1 rounded bg-[rgba(220,252,231,1)] text-[rgba(21,128,61,1)]">${plant.category}</button>
-                    <span class="text-[rgba(21,128,61,1)] font-bold"><i class="fa-solid fa-bangladeshi-taka-sign"></i>${plant.price}</span>
+                    <button class="px-3 py-1 rounded bg-[rgba(220,252,231,1)] text-[rgba(21,128,61,1)]">${tree.category}</button>
+                    <span class="text-[rgba(21,128,61,1)] font-bold"><i class="fa-solid fa-bangladeshi-taka-sign"></i>${tree.price}</span>
                 </div>
-                <button onclick="addPrice('${plant.category}','${plant.price}')"  class="w-full bg-[rgba(21,128,61,1)] mt-2 text-[rgba(255,255,255,1)] text-base font-medium rounded-[999px]">add to cart</button>
+                <button onclick="addPrice('${tree.category}','${tree.price}')"  class="w-full bg-[rgba(21,128,61,1)] mt-2 text-[rgba(255,255,255,1)] text-base font-medium rounded-[999px]">add to cart</button>
             </div>
 
 
@@ -117,5 +134,36 @@ const displayPlant = (plants) => {
         myAllCard2.appendChild(newCard);
 
     })
+
+}
+
+
+
+
+//
+const cardHistory = async (id) => {
+    const url = `https://openapi.programming-hero.com/api/plant/${id}`
+    // console.log(url);
+    const res = await fetch(url)
+    const details = await res.json()
+    cardHistoryDisplay(details.plants);
+
+
+}
+const cardHistoryDisplay = (tree) => {
+    const result = document.getElementById("card_details");
+    result.innerHTML = `
+    <figure><img src="${tree.image}" alt="" class="w-full h-60 rounded-lg" /></figure>
+                <h1  class=""> ${tree.name}</h1>
+                <p class="">${tree.description}</p>
+                <div class="flex justify-between items-center mt-2">
+                    <button class="px-3 py-1 rounded bg-[rgba(220,252,231,1)] text-[rgba(21,128,61,1)]">${tree.category}</button>
+                    <span class="text-[rgba(21,128,61,1)] font-bold"><i class="fa-solid fa-bangladeshi-taka-sign"></i>${tree.price}</span>
+                </div>
+
+    `
+    document.getElementById("word_modal").showModal();
+    console.log(tree);
+
 
 }
