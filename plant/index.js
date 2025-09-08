@@ -1,9 +1,14 @@
 const allPlant = () => {
+    const spin = document.getElementById("spine");
+    spin.style.display = "flex";
     const url = 'https://openapi.programming-hero.com/api/plants';
     fetch(url)
         .then(res => res.json())
-        .then(data => displayFunction(data.plants)
-    )
+        .then(data => {
+            displayFunction(data.plants)
+            spin.style.display="none"
+        }
+        )
 }
 allPlant();
 
@@ -29,13 +34,13 @@ const displayFunction = (plant) => {
         `
         cardTree.appendChild(newCard);
 
-   })
+    })
 
 
 }
 //
 let total = 0;
-const addPrice = (category, price)=>{
+const addPrice = (category, price) => {
     const cartBox = document.getElementById("cart_item");
     const div = document.createElement("div");
     div.innerHTML = `
@@ -68,7 +73,7 @@ const categories1 = () => {
     fetch(data)
         .then(res => res.json())
         .then(data => categoriesFun(data.categories)
-    )
+        )
 }
 categories1()
 
@@ -104,11 +109,17 @@ const handleCategoryPlant = (btn, categoryTd) => {
 }
 
 const loadCategoryPlant = (id) => {
+    const spin = document.getElementById("spine");
+    spin.style.display = "flex";
     const load = `https://openapi.programming-hero.com/api/category/${id}`
     fetch(load)
         .then(res => res.json())
-        .then(data => displayPlant(data.plants)
-    )
+        .then(data => {
+            displayPlant(data.plants)
+            spin.style.display = "none";
+
+        }
+        )
 }
 const displayPlant = (plant) => {
 
@@ -142,11 +153,14 @@ const displayPlant = (plant) => {
 
 //
 const cardHistory = async (id) => {
+    const spin = document.getElementById("spine");
+    spin.style.display = "flex";
     const url = `https://openapi.programming-hero.com/api/plant/${id}`
-    // console.log(url);
+    
     const res = await fetch(url)
     const details = await res.json()
     cardHistoryDisplay(details.plants);
+    spin.style.display = "none";
 
 
 }

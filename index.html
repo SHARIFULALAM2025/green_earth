@@ -22,6 +22,7 @@
                 <figure><img src="./assets/download-removebg-preview (1).png" alt="" class="w-6 "></figure>
                 <h1 class="text-[rgba(255,255,255,1)] text-xs md:text-base ">Green Earth</h1>
             </div>
+            <!--  -->
             <div class="text-xs md:text-sm">
                 <ul class="flex space-x-4 md:space-x-2">
                     <li><a href="" class="text-[rgba(255,255,255,1)] ">About</a></li>
@@ -30,6 +31,7 @@
                         </a></li>
                 </ul>
             </div>
+            <!--  -->
             <div class="">
                 <button
                     class="md:px-5 md:py-3 px-2.5 py-1.5 text-xs md:text-sm  bg-[#facc15] rounded-[999px] text-center text-[rgba(21,128,61,1)]">
@@ -60,23 +62,27 @@
 
         </div>
     </section>
+    <!-- loading -->
+     <section id="spine" class="flex justify-center items-center py-4 ">
+        <span class="loading loading-dots loading-xl text-red-600"></span>
+     </section>
     <!-- main section -->
     <main class="  bg-[#F0FDF4]">
-        <section class="w-11/12 mx-auto grid grid-cols-1 md:grid-cols-12">
+        <section class="w-11/12 mx-auto grid grid-cols-1 gap-3 md:grid-cols-12">
             <aside id="all_categories" class="order-1 md:order-2 md:col-span-2">
                 <h1 class="text-[rgba(0,0,0,1)] text-xl font-bold">Categories</h1>
                 <p class=" bg-[rgba(21,128,61,1)] text-[rgba(255,255,255,1)] pl-2 mt-3 mb-2">All Trees</p>
 
             </aside>
             <section class=" order-1 md:order-2 md:col-span-8">
-                <div id="all_cards" class="grid gap-5 grid-cols-1 md:grid-cols-3">
+                <div id="all_cards" class="grid gap-3 grid-cols-1 md:grid-cols-3">
 
                 </div>
 
 
 
             </section>
-            <aside id="cart_item" class="order-3  md:col-span-2 bg-white">
+            <aside id="cart_item" class="order-3  md:col-span-2 p-2 bg-white">
                 <h2 class=" text-[rgba(0,0,0,1)] text-xl font-bold"> Your Cart
                 </h2>
                 <div id="" class="">
@@ -148,31 +154,27 @@
                 <option>10 tree - 50$</option>
             </select><br>
             <button
-                class="md:px-5 md:py-3 w-full text-xs md:text-sm   bg-[rgba(250,204,21,1)] rounded-[999px] text-center text-[rgba(21,128,61,1)]">Donate
+                class="md:px-5 py-2 md:py-3 w-full text-xs md:text-sm   bg-[rgba(250,204,21,1)] rounded-[999px] text-center text-[rgba(21,128,61,1)]">Donate
                 Now</button>
         </form>
 
     </section>
-<!--  -->
-<!-- Open the modal using ID.showModal() method -->
+<!--modal  -->
 
 <dialog id="word_modal" class="modal modal-bottom sm:modal-middle">
     <div class="modal-box">
         <div id="card_details" class=""></div>
         <div class="modal-action">
             <form method="dialog">
-               
+
                 <button class="btn">Close</button>
             </form>
         </div>
     </div>
 </dialog>
 
-
-
-
-    <!--  -->
-    <footer class="bg-[rgba(20,83,45,1)] text-center p-4">
+<!--  footer-->
+<footer class="bg-[rgba(20,83,45,1)] text-center p-4">
         <small class="text-[rgba(255,255,255,1)] text-base font-normal ">© 2025 Green Earth. All Rights
             Reserved.</small>
     </footer>
