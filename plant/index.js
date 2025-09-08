@@ -14,14 +14,14 @@ const displayFunction = (plant) => {
         newCard.innerHTML = `
 
             <div class="bg-[rgba(255,255,255,1)] rounded-lg p-4">
-                <figure><img src="${tree.image}" alt="" class="w-full h-60 rounded-lg" /></figure>
-                <h1 onclick="cardHistory(${tree.id})" class=""> ${tree.name}</h1>
-                <p class="">${tree.description}</p>
+                <figure><img src="${tree.image}" alt="" class="w-full h-56 rounded-lg" /></figure>
+                <h1 onclick="cardHistory(${tree.id})" class="text-[#1F2937] mt-2 text-sm font-semibold"> ${tree.name}</h1>
+                <p class="text-[#1F2937] text-xs mt-1">${tree.description}</p>
                 <div class="flex justify-between items-center mt-2">
-                    <button class="px-3 py-1 rounded bg-[rgba(220,252,231,1)] text-[rgba(21,128,61,1)]">${tree.category}</button>
+                    <button class="px-3 py-1 text-sm rounded bg-[rgba(220,252,231,1)] text-[#15803D]">${tree.category}</button>
                     <span class="text-[rgba(21,128,61,1)] font-bold"><i class="fa-solid fa-bangladeshi-taka-sign"></i>${tree.price}</span>
                 </div>
-                <button onclick="addPrice('${tree.category}','${tree.price}')" class="w-full bg-[rgba(21,128,61,1)] mt-2 text-[rgba(255,255,255,1)] text-base font-medium rounded-[999px]">add to cart</button>
+                <button onclick="addPrice('${tree.category}','${tree.price}')" class="w-full bg-[rgba(21,128,61,1)] py-1 mt-4 text-[rgba(255,255,255,1)] text-base font-medium rounded-[999px]">add to cart</button>
             </div>
 
 
@@ -86,7 +86,7 @@ const categoriesFun = (cate) => {
 
         const newCategories = document.createElement("div");
         newCategories.innerHTML = `
-            <button  onclick="handleCategoryPlant(this,${cate.id})" class="mt-4 activeButton p-2 rounded-lg">${cate.category_name}</button>
+            <button  onclick="handleCategoryPlant(this,${cate.id})" class="mt-4 bg-[rgba(21,128,61,1)] text-[rgba(255,255,255,1)] activeButton p-2 rounded-lg">${cate.category_name}</button>
 
 
         `
@@ -119,14 +119,14 @@ const displayPlant = (plant) => {
         const newCard = document.createElement("div");
         newCard.innerHTML = `
         <div class="bg-[rgba(255,255,255,1)] rounded-lg p-4">
-                <figure><img src="${tree.image}" alt="" class="w-full h-60 rounded-lg" /></figure>
-                <h1 onclick="cardHistory(${tree.id})" class=""> ${tree.name}</h1>
-                <p class="">${tree.description}</p>
+                <figure><img src="${tree.image}" alt="" class="w-full h-56 rounded-lg" /></figure>
+                <h1 onclick="cardHistory(${tree.id})" class="text-[#1F2937] mt-2 text-sm font-semibold"> ${tree.name}</h1>
+                <p class="text-[#1F2937] text-xs mt-1">${tree.description}</p>
                 <div class="flex justify-between items-center mt-2">
                     <button class="px-3 py-1 rounded bg-[rgba(220,252,231,1)] text-[rgba(21,128,61,1)]">${tree.category}</button>
                     <span class="text-[rgba(21,128,61,1)] font-bold"><i class="fa-solid fa-bangladeshi-taka-sign"></i>${tree.price}</span>
                 </div>
-                <button onclick="addPrice('${tree.category}','${tree.price}')"  class="w-full bg-[rgba(21,128,61,1)] mt-2 text-[rgba(255,255,255,1)] text-base font-medium rounded-[999px]">add to cart</button>
+                <button onclick="addPrice('${tree.category}','${tree.price}')"  class="w-full bg-[rgba(21,128,61,1)] mt-4 py-1 text-[rgba(255,255,255,1)] text-base font-medium rounded-[999px]">add to cart</button>
             </div>
 
 
