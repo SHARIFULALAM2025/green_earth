@@ -130,8 +130,75 @@ it is very easy .and sort
 ```
 
 #### 4) How does destructuring assignment work in ES6?
+in javascript  destructing assignment  is a syntax  that allows  you to  unpack value from  arrays  or properties from object into distinct  in a very concise way
+given below destructing example:
+1. arrays destructing
+```
+const numbers =[10,20,30];
+const [x,y,z]=numbers
+console.log(x)
+console.log(y)
+console.log(z)
+```
+2. object destructing
+```
+const data={
+        name:"shariful",
+        age:34,
+        address:"dhaka"
+}
+const {name,age,address}=data
+console.log(name)
+console.log(age)
+console.log(address)
+```
+3.nested object destructing
+```
+const user={
+        id:1,
+        profile:{
+                username:"shariful",
+                email:"sjariful@gmail.com"
+        }
+}
+const {profile:{username,email}}=user;
+console.log(username);
+console.log(email)
+```
+4.function parameter with destructuring
+```
+function display({name,age}){
+        console.log(`${name} is ${age} years old`)
+}
+display({name:"john",age:39})
+```
 
 #### 5) Explain template literals in ES6. How are they different from string concatenation?
 
+in javascript template literals are a new way to work with string that makes them powerful and readable compared to traditional string concatenation
 
+syntax of template literals:
+1. using backticks(``) instead of quotes ('' or "")
+2.embed expression inside ${...}
+3.it support multi-line without needing \n
+```
+const name="shariful alam";
+ const age =43;
+ const message=`Hello my name is ${name} and i am ${age years old}`
+ console.log(message)
 
+ ```
+2.multi line string
+```
+const text=`
+line......1
+line ......2
+line .........3
+`
+console.log(text)
+```
+main difference form concatenation
+1. readability....no messy + operator
+2.multi-line support
+3.expression evaluation -can directly compute inside ${}
+4.tagged templates --allow custom string processing.
